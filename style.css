@@ -1,0 +1,394 @@
+/* ------------------------------------------------------------------
+   jean-sebastienfontaine.com
+   One stylesheet for the whole site. No frameworks, no dependencies.
+   Fonts are served from your own server (see /fonts), so this page
+   makes no requests to anyone else.
+   ------------------------------------------------------------------ */
+
+/* ---------- fonts ---------- */
+
+/* Source Serif 4 — body text, headings, paper titles. Variable weight. */
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url('fonts/source-serif-4.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+                 U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122,
+                 U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url('fonts/source-serif-4-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB,
+                 U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: italic;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url('fonts/source-serif-4-italic.woff2') format('woff2');
+}
+
+/* Inter — navigation, labels, citation metadata. */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/inter-400.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+                 U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122,
+                 U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('fonts/inter-600.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+                 U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122,
+                 U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Inter'; font-style: normal; font-weight: 400;
+  font-display: swap;
+  src: url('fonts/inter-ext-400.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB,
+                 U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Inter'; font-style: normal; font-weight: 600;
+  font-display: swap;
+  src: url('fonts/inter-ext-600.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB,
+                 U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* ---------- design tokens ---------- */
+
+:root {
+  --ink:       #1e2140;   /* main text                                */
+  --ink-soft:  #5f6480;   /* authors, journals, dates                 */
+  --ink-faint: #8b90a6;   /* footer                                   */
+  --accent:    #2c698d;   /* links — your original blue               */
+  --rule:      #e6ebeb;   /* hairlines                                */
+  --rule-firm: #cbdcdc;   /* section rules, slightly teal             */
+  --page:      #fdfdfc;   /* a hair off pure white, easier on the eye */
+
+  --serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --sans:  'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+           Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  --measure: 44rem;
+}
+
+/* ---------- base ---------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0 2rem;
+  background: var(--page);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.125rem;      /* 18px */
+  line-height: 1.72;
+  font-feature-settings: 'kern' 1, 'liga' 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.wrap {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 4.5rem 0 5rem;
+}
+
+p { margin: 0 0 1.25rem; }
+p:last-child { margin-bottom: 0; }
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+  transition: color 0.12s ease;
+}
+a:hover, a:focus-visible { text-decoration: underline; }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* ---------- masthead ---------- */
+
+header.site { margin-bottom: 3.5rem; }
+
+.site-name {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 2.1rem;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+
+.site-role {
+  margin: 0.55rem 0 0;
+  font-family: var(--sans);
+  font-size: 0.94rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+nav.site {
+  margin-top: 1.9rem;
+  padding-top: 1.15rem;
+  border-top: 1px solid var(--rule-firm);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  font-family: var(--sans);
+  font-size: 0.95rem;
+}
+
+nav.site a { color: var(--ink-soft); }
+nav.site a:hover { color: var(--accent); }
+nav.site a[aria-current="page"] {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* ---------- about page ---------- */
+
+.intro {
+  display: flex;
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+
+/* The portrait, and the photo hiding behind it.
+   A hidden checkbox drives the swap — no JavaScript involved. */
+
+.photo-toggle { display: none; }
+
+.photo-swap {
+  flex: 0 0 auto;
+  display: block;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.photo-swap:focus-within { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.photo-swap img {
+  display: block;
+  width: 158px;
+  height: 158px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.photo-swap .photo-a { object-position: center center; }
+.photo-swap .photo-b { display: none; object-position: 42% 42%; }
+
+.photo-toggle:checked + .photo-swap .photo-a { display: none; }
+.photo-toggle:checked + .photo-swap .photo-b { display: block; }
+
+/* Text for screen readers only — visible to assistive software, not on screen */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.intro > div { max-width: 34rem; }
+
+.links {
+  margin: 3rem 0 0;
+  padding: 1.2rem 0 0;
+  border-top: 1px solid var(--rule);
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  font-family: var(--sans);
+  font-size: 0.94rem;
+}
+.links li { margin: 0; }
+
+/* ---------- research / policy pages ---------- */
+
+.lede {
+  margin: 0 0 1rem;
+  max-width: 36rem;
+  color: var(--ink-soft);
+  font-size: 1.06rem;
+  line-height: 1.65;
+}
+
+/* ---------- sections ---------- */
+
+h2.section {
+  margin: 4rem 0 0;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--rule-firm);
+  font-family: var(--sans);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+h2.section:first-of-type { margin-top: 1rem; }
+p.lede + h2.section { margin-top: 2.75rem; }
+
+h3.subhead {
+  margin: 2.5rem 0 0;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+}
+
+ul.papers { margin: 0; padding: 0; list-style: none; }
+
+.paper {
+  padding: 1.7rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.paper:last-child { border-bottom: none; }
+
+.paper .title {
+  display: block;
+  font-family: var(--serif);
+  font-size: 1.135rem;
+  font-weight: 600;
+  line-height: 1.45;
+  letter-spacing: -0.005em;
+  text-wrap: pretty;
+}
+
+/* A linked title stays a title: it takes the text colour, and only
+   reveals itself as a link on hover. Keeps long lists calm. */
+.paper .title a {
+  color: inherit;
+  text-decoration: none;
+}
+.paper .title a:hover,
+.paper .title a:focus-visible {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+}
+
+.paper .meta {
+  display: block;
+  margin-top: 0.4rem;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+.paper .venue { font-style: italic; }
+
+.paper .status {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.paper .actions {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.4rem;
+  font-family: var(--sans);
+  font-size: 0.855rem;
+  letter-spacing: 0.005em;
+}
+
+/* the compact Bank of Canada listing */
+.compact .paper .actions { margin-top: 0.3rem; font-size: 0.82rem; }
+.compact { margin-top: 0.4rem; }
+.compact .paper { padding: 0.85rem 0; border-bottom: none; }
+.compact .paper .title { font-size: 1.05rem; font-weight: 500; }
+.compact .paper .meta { margin-top: 0.15rem; font-size: 0.875rem; }
+
+/* ---------- contact ---------- */
+
+.portrait-figure {
+  margin: 3rem 0 0;
+  padding-top: 2rem;
+  border-top: 1px solid var(--rule);
+}
+.portrait-figure img {
+  display: block;
+  width: 100%;
+  max-width: 26rem;   /* kept modest — it is a photograph, not a hero image */
+  height: auto;
+  border-radius: 2px;
+}
+.portrait-figure figcaption {
+  margin-top: 0.7rem;
+  font-family: var(--sans);
+  font-size: 0.86rem;
+  color: var(--ink-soft);
+}
+
+.contact p { margin: 0 0 1.1rem; }
+
+/* ---------- footer ---------- */
+
+footer.site {
+  margin-top: 5rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--rule);
+  font-family: var(--sans);
+  font-size: 0.84rem;
+  color: var(--ink-faint);
+}
+
+/* ------------------------------------------------------------------
+   Phones and narrow windows — the part the old site never had.
+   ------------------------------------------------------------------ */
+
+@media (max-width: 44rem) {
+  body { padding: 0 1.35rem; font-size: 1.0625rem; }
+  .wrap { padding: 2.75rem 0 3.5rem; }
+
+  header.site { margin-bottom: 2.5rem; }
+  .site-name { font-size: 1.72rem; }
+  nav.site { margin-top: 1.5rem; gap: 1.5rem; }
+
+  .intro { flex-direction: column; gap: 1.5rem; }
+  .photo-swap img { width: 124px; height: 124px; }
+
+  .links { gap: 1.3rem; }
+  h2.section { margin-top: 3rem; }
+  .paper { padding: 1.45rem 0; }
+  .paper .title { font-size: 1.08rem; }
+}
+
+/* Readers who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}

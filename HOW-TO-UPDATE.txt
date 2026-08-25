@@ -1,0 +1,105 @@
+HOW TO UPDATE YOUR WEBSITE
+==========================
+
+You do not need any special software. You need a plain text editor
+(TextEdit on a Mac, Notepad on Windows, or the editor built into GoDaddy's
+File Manager) and the ability to upload a file.
+
+There is no compiling, no building, no installing. What you edit is exactly
+what visitors see.
+
+
+WHAT EACH FILE IS
+-----------------
+  index.html        the About page (your photo and bio)
+  research.html     working papers, journal articles, book chapters, archived
+  policy.html       the Bank of Canada notes and discussion papers
+  contact.html      the contact page
+  style.css         all the styling for all three pages
+  papers/           your PDFs, one per paper, plus CV.pdf
+  data/             the two published datasets
+  media/photo.jpg   your photo
+  fonts/            the two typefaces, served from your own server
+
+
+TO ADD A NEW PAPER
+------------------
+1. Put the PDF in the papers/ folder. Give it a simple lowercase name with
+   hyphens instead of spaces, for example:  new-paper-title.pdf
+
+2. Open research.html in a text editor.
+
+3. Find the section it belongs in — search for the words
+   "WORKING PAPERS" or "JOURNAL PUBLICATIONS". (Bank of Canada notes
+   live in policy.html instead.)
+
+4. Find an existing paper that looks like the one you're adding. It is a
+   block that starts with  <li class="paper">  and ends with  </li>
+   Select that whole block, copy it, and paste it directly above or below.
+
+5. In your pasted copy, change the words between the tags:
+     - between <span class="title"> and </span>  ... the paper title
+     - after "with"                              ... the coauthors
+     - between <span class="venue"> and </span>  ... the journal name
+     - the year
+     - the file name after  href="/papers/       ... your new PDF
+
+6. Save the file and upload it to the server, replacing the old one.
+
+That's the whole job. If you paste the block and change nothing else, the
+new entry will look exactly like every other one.
+
+
+TO CHANGE YOUR BIO
+------------------
+Open index.html and edit the text between the <p> and </p> tags. Ignore
+everything else in the file.
+
+
+A FEW RULES THAT WILL SAVE YOU TROUBLE
+--------------------------------------
+* Every <tag> has a matching </tag>. Keep them in pairs. If something looks
+  broken after an edit, you have almost certainly deleted half of a pair.
+
+* Don't rename files unless you also change every place they're linked.
+
+* & must be written as &amp; inside the page — that's why the S&P entry
+  reads "S&amp;P". Similarly, an en-dash is &ndash;.
+
+* Always keep a copy of the previous version before you upload a new one.
+  Then any mistake is thirty seconds from being undone.
+
+* To check your work before uploading: double-click the .html file on your
+  own computer. It opens in your browser and looks exactly as it will on the
+  site. The PDF links will work too.
+
+
+IF SOMETHING GOES WRONG
+-----------------------
+Upload your previous copy of the file. The site returns to how it was.
+Nothing else can break, because nothing else is moving.
+
+THE HIDDEN PHOTO
+----------------
+Clicking the round portrait on the About page swaps in a second picture;
+clicking again swaps back. It uses no JavaScript — just a hidden checkbox and
+two images, and the stylesheet shows whichever one matches.
+
+To change the second picture: put your new image in the media/ folder and,
+in index.html, change the filename on the line marked "photo-b". Nothing else
+needs touching. Resize it to roughly 1200 pixels wide first so the page stays
+quick to load.
+
+To remove it entirely: in index.html, delete the <input> and <label> block and
+put back a plain line reading
+    <img src="media/photo.jpg" alt="Jean-Sebastien Fontaine">
+
+A SHORTER COMPANION PIECE
+-------------------------
+If a paper also has a plain-language summary or blog post, it goes underneath
+the paper rather than as its own entry. Copy this line into the paper's block,
+just before the closing </li>, and change the address and the wording:
+
+    <span class="actions"><a href="THE-WEB-ADDRESS" rel="noopener">Plain-language summary</a></span>
+
+See "Will Asset Managers Dash for Cash?" in policy.html for a live example.
