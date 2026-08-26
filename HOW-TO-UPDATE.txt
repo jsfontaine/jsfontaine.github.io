@@ -2,11 +2,18 @@ HOW TO UPDATE YOUR WEBSITE
 ==========================
 
 You do not need any special software. You need a plain text editor
-(TextEdit on a Mac, Notepad on Windows, or the editor built into GoDaddy's
-File Manager) and the ability to upload a file.
+(Notepad on Windows, TextEdit on a Mac) and GitHub Desktop, which is already
+installed.
 
 There is no compiling, no building, no installing. What you edit is exactly
 what visitors see.
+
+The site is no longer on GoDaddy's servers. It lives in the folder
+
+    C:\Users\Jean-SébastienFontai\jsfontaine.github.io
+
+and is published by GitHub Pages. GoDaddy still owns the domain name — that
+part has not changed — but nothing is uploaded to GoDaddy any more.
 
 
 WHAT EACH FILE IS
@@ -14,18 +21,48 @@ WHAT EACH FILE IS
   index.html        the About page (your photo and bio)
   research.html     working papers, journal articles, book chapters, archived
   policy.html       the Bank of Canada notes and discussion papers
+  conferences.html  the Fixed Income Conference Series
   contact.html      the contact page
-  style.css         all the styling for all three pages
+  style.css         all the styling for all five pages
   papers/           your PDFs, one per paper, plus CV.pdf
+  conferences/      the conference programs, one PDF per event
   data/             the two published datasets
   media/photo.jpg   your photo
   fonts/            the two typefaces, served from your own server
+
+
+TO PUBLISH A CHANGE
+-------------------
+This replaced the old "upload the file to GoDaddy" step.
+
+1. Edit the file in your text editor and save it.
+
+2. Open GitHub Desktop. The "Changes" tab on the left lists every file you
+   touched. Click one to see exactly what changed: removed lines in red,
+   added lines in green.
+
+3. READ THAT LIST. This is the whole safety mechanism. If it shows something
+   you did not expect, stop and look before going further.
+
+4. Type a short note in the "Summary" box saying what you did, for example
+   "add 2027 conference", and click "Commit to main".
+
+5. Click "Push origin" at the top. Your change is now live. It usually
+   appears within a minute; occasionally it takes a few.
+
+Steps 4 and 5 are separate on purpose. Committing records the change on your
+own computer. Pushing publishes it. You can commit several times and push
+once.
 
 
 TO ADD A NEW PAPER
 ------------------
 1. Put the PDF in the papers/ folder. Give it a simple lowercase name with
    hyphens instead of spaces, for example:  new-paper-title.pdf
+
+   Lowercase matters now. The old server treated Paper.pdf and paper.pdf as
+   the same file. GitHub does not. A capital letter in the wrong place is the
+   most likely cause of a link that used to work and suddenly doesn't.
 
 2. Open research.html in a text editor.
 
@@ -42,12 +79,70 @@ TO ADD A NEW PAPER
      - after "with"                              ... the coauthors
      - between <span class="venue"> and </span>  ... the journal name
      - the year
-     - the file name after  href="/papers/       ... your new PDF
+     - the file name after  href="papers/        ... your new PDF
 
-6. Save the file and upload it to the server, replacing the old one.
+6. Save, then publish it using the five steps above.
 
 That's the whole job. If you paste the block and change nothing else, the
 new entry will look exactly like every other one.
+
+
+AFTER A NEW CONFERENCE
+----------------------
+The conferences page has more numbers in it than the other pages, and they
+have to move together or it starts contradicting itself. Work down this list.
+
+THE EASY PART — the editions list:
+
+  1. Put the program PDF in conferences/ , named like the others:
+     2027-10th-program.pdf
+
+  2. In conferences.html, find the entry for the conference that just
+     happened. Remove the line that says
+         <span class="status">Forthcoming</span>
+     and the sentence about a call for papers, then write the one-line
+     description and add the "Program (PDF)" link — copy the shape of the
+     entry directly below it.
+
+  3. Copy that whole block and paste it ABOVE, as the placeholder for the
+     next one. Newest goes at the top.
+
+THE FIDDLY PART — the figures under "Tracking the papers":
+
+  4. "nine numbered editions" becomes ten. It appears once, just under the
+     heading.
+
+  5. The five figures in the grey row: papers presented, papers an edition,
+     the percentage published, the count in the finance top three, and the
+     median lag. All five change.
+
+  6. The two cohorts named as "too early to tell" change, in both chart
+     legends and in both long descriptions that begin aria-label=.
+
+  7. "at least seven years to publish" in the first chart's legend, and
+     "four to eleven published papers" in the second chart's note.
+
+THE PART TO ASK FOR HELP WITH:
+
+  8. The two charts themselves. Each bar is a line of numbers giving its
+     exact position and height, and adding a tenth bar means recalculating
+     all of them. This is not worth doing by hand and it is not a failure of
+     nerve to say so — ask for help with this step.
+
+  9. The impact-factor figures are a 2026 vintage. If they are refreshed,
+     the two dashed reference lines (Journal of Finance, Journal of Monetary
+     Economics) must be refreshed at the same time, or the comparison drifts
+     without anyone noticing.
+
+TWO THINGS THAT SHOULD NOT CHANGE:
+
+  * The note explaining that an impact factor belongs to a journal and not
+    to a conference. It is there deliberately.
+
+  * The word "median". The figures are medians rather than averages on
+    purpose — with only a handful of published papers an edition, one paper
+    in a very high-factor journal drags an average a long way. The chart's
+    own note says so.
 
 
 TO CHANGE YOUR BIO
@@ -61,23 +156,54 @@ A FEW RULES THAT WILL SAVE YOU TROUBLE
 * Every <tag> has a matching </tag>. Keep them in pairs. If something looks
   broken after an edit, you have almost certainly deleted half of a pair.
 
+* Lowercase file names, always. See the note under "add a new paper".
+
 * Don't rename files unless you also change every place they're linked.
 
 * & must be written as &amp; inside the page — that's why the S&P entry
   reads "S&amp;P". Similarly, an en-dash is &ndash;.
 
-* Always keep a copy of the previous version before you upload a new one.
-  Then any mistake is thirty seconds from being undone.
+* To check your work before publishing: double-click the .html file in your
+  folder. It opens in your browser and looks exactly as it will on the site.
+  The PDF links will work too.
 
-* To check your work before uploading: double-click the .html file on your
-  own computer. It opens in your browser and looks exactly as it will on the
-  site. The PDF links will work too.
+* Never put a password, a key, or a login of any kind into any file here.
+  The repository is public and its history is permanent — deleting a file
+  later does not erase what was in it. This is not hypothetical: the 2017
+  conference program arrived with a wifi login and a download password on
+  its last page, and that page had to be removed before it was published.
+  Anything you did not write yourself is worth reading to the end first.
 
 
 IF SOMETHING GOES WRONG
 -----------------------
-Upload your previous copy of the file. The site returns to how it was.
-Nothing else can break, because nothing else is moving.
+Before you push:
+  In GitHub Desktop, right-click the file in the Changes list and choose
+  "Discard changes". The file returns to how it was. Nothing was published.
+
+After you push:
+  Open the History tab, right-click the commit you regret, and choose
+  "Revert changes in commit". That makes a new commit undoing it. Push
+  again. The site returns to how it was, usually within a minute.
+
+You cannot lose the site by editing a file. Every version is kept.
+
+
+WORKING WITH AN AI ASSISTANT
+----------------------------
+The same four moves every time:
+
+  1. Make sure GitHub Desktop shows "No local changes" before you start.
+     That is your marker.
+  2. Let it work.
+  3. Read the Changes list. Every single file.
+  4. Keep it (commit and push) or throw it away (discard).
+
+Move 3 is the point. Changes are safe because they are reviewable and
+reversible, not because the assistant is reliable.
+
+Never share a password. It has not been needed once.
+
 
 THE HIDDEN PHOTO
 ----------------
@@ -94,6 +220,7 @@ To remove it entirely: in index.html, delete the <input> and <label> block and
 put back a plain line reading
     <img src="media/photo.jpg" alt="Jean-Sebastien Fontaine">
 
+
 A SHORTER COMPANION PIECE
 -------------------------
 If a paper also has a plain-language summary or blog post, it goes underneath
@@ -103,3 +230,12 @@ just before the closing </li>, and change the address and the wording:
     <span class="actions"><a href="THE-WEB-ADDRESS" rel="noopener">Plain-language summary</a></span>
 
 See "Will Asset Managers Dash for Cash?" in policy.html for a live example.
+
+
+ONE THING TO CHECK ONCE A YEAR
+------------------------------
+The domain name renews through GoDaddy. Make sure auto-renew is on and the
+card on file is valid. If the domain lapses, the site goes down no matter
+what is in this folder — and someone else can register the name.
+
+The hosting itself is free and does not renew.

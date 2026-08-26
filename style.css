@@ -392,3 +392,131 @@ footer.site {
   html { scroll-behavior: auto; }
   * { transition: none !important; }
 }
+
+/* ------------------------------------------------------------------
+   Conference series page
+   Added August 2026. Nothing above this line was changed.
+   ------------------------------------------------------------------ */
+
+/* A sentence describing an entry. Serif, so it reads as prose rather
+   than as metadata. */
+.blurb {
+  display: block;
+  margin-top: 0.5rem;
+  max-width: 38rem;
+  color: var(--ink-soft);
+  font-size: 1.02rem;
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+/* The four figures above the chart. */
+ul.stats {
+  margin: 1.7rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6rem 1.5rem;
+}
+ul.stats li { margin: 0; }
+
+.stat-n {
+  display: block;
+  font-family: var(--serif);
+  font-size: 1.7rem;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+.stat-l {
+  display: block;
+  margin-top: 0.3rem;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: var(--ink-soft);
+}
+
+/* The chart is drawn in the page as SVG — it stays sharp at any size,
+   costs no extra file, and picks up the colours above automatically.
+   To update it, change the bar heights and the labels in the HTML. */
+figure.chart { margin: 2.6rem 0 0; }
+figure.chart svg { display: block; width: 100%; height: auto; }
+
+.chart-title {
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.chart-legend {
+  margin: 0.55rem 0 1rem;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+.key-item { display: inline-block; margin-right: 1.6rem; }
+.key {
+  display: inline-block;
+  width: 0.72rem;
+  height: 0.72rem;
+  margin-right: 0.42rem;
+  vertical-align: -0.02rem;
+  border-radius: 2px;
+}
+.key-solid { background: var(--accent); }
+.key-open {
+  background-color: #eef4f7;
+  background-image: repeating-linear-gradient(
+    45deg, var(--accent) 0 2px, #eef4f7 2px 6px);
+}
+
+.chart-note {
+  margin-top: 1rem;
+  max-width: 38rem;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+figure.chart .grid line { stroke: var(--rule); stroke-width: 1; }
+figure.chart .axis      { stroke: var(--rule-firm); stroke-width: 1; }
+figure.chart .bar       { fill: var(--accent); }
+figure.chart .bar-open  { fill: url(#hatch); stroke: var(--accent); stroke-width: 1; }
+figure.chart .hatch-bg  { fill: #eef4f7; }
+figure.chart .hatch-line { stroke: var(--accent); }
+
+/* Reference lines — the two journals the cohort averages are compared against. */
+figure.chart .ref line {
+  stroke: var(--ink-faint);
+  stroke-width: 1;
+  stroke-dasharray: 4 3;
+}
+/* Anchored to the right edge so they grow inward — they can never be
+   clipped, whatever the font size. */
+figure.chart .ref text {
+  font-size: 10px;
+  fill: var(--ink-faint);
+  text-anchor: end;
+}
+
+figure.chart text { font-family: var(--sans); fill: var(--ink-soft); }
+figure.chart .ylab text { font-size: 11px; text-anchor: end; }
+figure.chart .val  text { font-size: 12px; font-weight: 600; text-anchor: middle;
+                          fill: var(--ink); }
+figure.chart .xlab text { font-size: 12px; text-anchor: middle; fill: var(--ink); }
+figure.chart .xlab .xyear { font-size: 11px; font-weight: 400; fill: var(--ink-soft); }
+
+@media (max-width: 44rem) {
+  ul.stats { grid-template-columns: repeat(2, 1fr); gap: 1.3rem; }
+  .stat-n  { font-size: 1.5rem; }
+  .blurb   { font-size: 0.99rem; }
+  .key-item { margin-right: 0; display: block; margin-bottom: 0.3rem; }
+  /* The chart shrinks with the screen, so the smallest labels need a nudge
+     to stay readable. 12px is the widest that still fits the right margin. */
+  figure.chart .ref text { font-size: 12px; }
+}
