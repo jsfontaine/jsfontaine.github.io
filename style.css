@@ -520,3 +520,52 @@ figure.chart .xlab .xyear { font-size: 11px; font-weight: 400; fill: var(--ink-s
      to stay readable. 12px is the widest that still fits the right margin. */
   figure.chart .ref text { font-size: 12px; }
 }
+
+/* ---------- contents list ---------- */
+
+/* A short index of the sections on long pages. Plain links — clicking one
+   scrolls to that section. Nothing here needs JavaScript. */
+nav.contents {
+  margin: 0 0 1rem;
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--sans);
+  font-size: 0.88rem;
+}
+p.lede + nav.contents { margin-top: 1.9rem; }
+
+.contents-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+nav.contents ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.4rem;
+}
+nav.contents li { margin: 0; }
+nav.contents a { color: var(--ink-soft); }
+nav.contents a:hover, nav.contents a:focus-visible { color: var(--accent); }
+
+/* The section a visitor has just jumped to, so the landing is obvious. */
+h2.section:target { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* Leave a little air above a heading that has been scrolled to, rather than
+   pinning it to the very top edge of the window. */
+h2.section { scroll-margin-top: 1.6rem; }
+
+nav.contents + h2.section { margin-top: 2.5rem; }
+
+@media (max-width: 44rem) {
+  nav.contents ul { gap: 0.35rem 1.1rem; }
+  nav.contents { font-size: 0.86rem; }
+}
