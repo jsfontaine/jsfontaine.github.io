@@ -569,3 +569,7 @@ nav.contents + h2.section { margin-top: 2.5rem; }
   nav.contents ul { gap: 0.35rem 1.1rem; }
   nav.contents { font-size: 0.86rem; }
 }
+
+/* A one-line gloss under a paper — the author's own summary, not a quotation
+   from the paper, so it is set in italic rather than in quote marks. */
+.blurb.gloss { font-style: italic; }
