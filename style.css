@@ -245,6 +245,11 @@ nav.site a[aria-current="page"] {
 /* ---------- sections ---------- */
 
 h2.section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.4em 1em;
   margin: 4rem 0 0;
   padding-bottom: 0.6rem;
   border-bottom: 1px solid var(--rule-firm);
@@ -255,6 +260,12 @@ h2.section {
   text-transform: uppercase;
   color: var(--ink-soft);
 }
+
+.to-top {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
 h2.section:first-of-type { margin-top: 1rem; }
 p.lede + h2.section { margin-top: 2.75rem; }
 
