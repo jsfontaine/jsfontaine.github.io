@@ -1,0 +1,20 @@
+# Files that must never be published.
+#
+# This repository is public and its history is permanent: once a file has
+# been pushed, deleting it later does not remove it. The lines below stop
+# GitHub Desktop from offering these files for commit in the first place.
+
+# The paper-level publication audit. It names individual authors and
+# records unverified "no publication located" findings, so it stays private.
+*Publication_Audit*
+*publication_audit*
+
+# Spreadsheets in general. Nothing on this site is published as a
+# spreadsheet; the datasets in data/ are CSV and TXT. If you ever want to
+# publish a spreadsheet deliberately, delete these two lines first —
+# otherwise GitHub Desktop will quietly refuse to show it.
+*.xlsx
+*.xls
+
+# Temporary lock files that Excel and Word create while a file is open.
+~$*
